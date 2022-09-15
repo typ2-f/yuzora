@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRestsTable extends Migration
+class CreateBookStatusLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateRestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rests', function (Blueprint $table) {
+        Schema::create('book_status_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('attendance_id');
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
+            $table->unsignedBigInteger('book_detail_id');
+            $table->unsignedBigInteger('present_strage_id');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
 
-            $table->foreign('attendance_id')
+            $table->foreign('book_detail_id')
                 ->references('id')
-                ->on('attendances')
+                ->on('book_details')
                 ->onDelete('cascade');
         });
     }
@@ -35,6 +34,6 @@ class CreateRestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rests');
+        Schema::dropIfExists('book_status_logs');
     }
 }
