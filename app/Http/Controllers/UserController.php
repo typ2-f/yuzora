@@ -26,17 +26,17 @@ class UserController extends Controller
      */
     public function auth(Request $request)
     {
-        $email = $request->email;
+        $name = $request->name;
         $password = $request->password;
 
         $credential = [
-            'email' => $email,
+            'name' => $name,
             'password' => $password
         ];
         if (Auth::attempt($credential)) {
             return redirect('/');
         } else {
-            return back()->withInput()->with('error', 'メールアドレスまたはパスワードが違います');
+            return back()->withInput()->with('error', '存在しない名前、またはパスワードが違います');
         };
     }
 
@@ -58,15 +58,14 @@ class UserController extends Controller
         try {
             User::create([
                 'name' => $form->name,
-                'email' => $form->email,
                 'password' => Hash::make($form->password)
             ]);
         } catch (QueryException $e) {
 
-            //既に存在するemail->1062エラーでcreateできないときエラー文を返す
+            //既に存在する名前->1062エラーでcreateできないときエラー文を返す
             $errorCode = $e->errorInfo[1];
             if ($errorCode == 1062) {
-                return back()->withInput()->with(['error' => 'このアドレスはすでに使用されています']);
+                return back()->withInput()->with(['error' => 'この名前はすでに使用されています']);
             }
         }
         return redirect('/login');

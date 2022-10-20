@@ -8,7 +8,6 @@ use App\Models\Attendance;
 use App\Models\Rest;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
@@ -19,7 +18,10 @@ class AttendanceController extends Controller
      */
     public function stamp()
     {
-        $param = Attendance::stamp();
+        $data = Attendance::common();
+        $param = [
+            'name' => $data['user']->name
+        ];
         return view('stamp', $param);
     }
 

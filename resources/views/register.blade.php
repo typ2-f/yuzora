@@ -6,7 +6,7 @@
 @section('content')
     <h1 class='content-ttl'>会員登録</h1>
 
-    <!--divタグ直後の全角スペースで常に文字を存在させる-->
+    <!--divタグ直後の全角スペースで常に文字を存在させ位置を固定する-->
     <div class='flash_msg'>　
         @if (session('error'))
             {{ session('error') }}
@@ -19,13 +19,6 @@
             <div class='form-element'>
                 <input type='text' class='form-input' name='name' id='name' required value='{{ old('name') }}' placeholder='名前'>
             </div>
-
-            <!--メールアドレス-->
-            <div class='form-element'>
-                <input type='text' class='form-input' name='email' id='email' required value='{{ old('email') }}'
-                    placeholder='メールアドレス'>
-            </div>
-
             <!--パスワード-->
             <div class='form-element'>
                 <input type='password' class='form-input' name='password' id='password' required placeholder='パスワード'>

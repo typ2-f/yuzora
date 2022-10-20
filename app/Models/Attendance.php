@@ -32,26 +32,11 @@ class Attendance extends Model
         $user   = Auth::user();
         $today  = Carbon::today()->format('Y-m-d');
         $now    = Carbon::now()->format('H:i:s');
-        $atte = Attendance::where('user_id', $user->id)
-            ->where('date_on', $today)
-            ->first();
-
-        if (isset($atte)) {
-            $rests = $atte->rests->last();
-        } else {
-            $rests = Null;
-        };
 
         $data = [
             'user'  => $user,
-            'atte'  => $atte,
             'today' => $today,
-            'now'   => $now,
-            //各データが入っているかの判定
-            'atte_start' => isset($atte->start_time),
-            'atte_end'   => isset($atte->end_time),
-            'rest_start' => isset($rests->start_time),
-            'rest_end'   => isset($rests->end_time),
+            'now'   => $now
         ];
         return $data;
     }

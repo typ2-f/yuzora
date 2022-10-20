@@ -6,7 +6,7 @@
 @section('content')
     <h1 class='content-ttl'>ログイン</h1>
 
-    <!--divタグ直後の全角スペースで常に文字を存在させる-->
+    <!--divタグ直後の全角スペースで常に文字を存在させ位置を固定する-->
     <div class='flash_msg'>　
         @if (session('error'))
             {{ session('error') }}
@@ -17,8 +17,8 @@
         <form action='/login' method='post'>
             @csrf
             <div class='form-element'>
-                <input type='text' class='form-input' name='email' required value='{{ old('email') }}'
-                    placeholder='メールアドレス'>
+                <input type='text' class='form-input' name='name' required value='{{ old('name') }}'
+                    placeholder='お名前'>
             </div>
             <div class='form-element'>
                 <input type='password' class='form-input' name='password' required placeholder='パスワード'>

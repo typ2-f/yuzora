@@ -33,7 +33,7 @@ Route::get('/register', [UserController::class, 'create']);
 Route::post('/register', [UserController::class, 'store']);
 
 //ログイン
-Route::get('/login', [UserController::class, 'login'])->name('login');;
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'auth']);
 
 
