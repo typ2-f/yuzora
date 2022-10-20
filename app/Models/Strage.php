@@ -14,6 +14,6 @@ class Strage extends Model
     }
         public function bookDetails()
     {
-        return $this->hasMany(BookStatusLog::class);
+        return $this->hasMany(BookDetail::class);
     }
 }
