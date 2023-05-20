@@ -1,0 +1,16 @@
+URL(ドメイン省略),method,controller,function,auth,detail
+/,GET,Index,index,0,トップページ
+/login,GET,AuthenticatedSession,create,0,ログインページ
+/login,POST,AuthenticatedSession,store,0,ログイン処理
+/home,GET,User,index,1,マイページ
+/books,GET,Book,index,1,蔵書一覧
+/books/register,GET,Book,create,1,書籍の登録ページ
+/books/register,POST,Book,store,1,書籍の登録
+/books/{book_id},GET,Book,show,1,書籍情報の確認
+/books/{book_id},PATCH,Book,update,1,書籍情報の更新
+/books/{book_id},DELETE,Book,destroy,1,書籍の削除
+/storages,GET,Storage,index,1,倉庫一覧
+/storages/{storage_id},GET,BookInStorage,index,1,倉庫内の書籍一覧
+/profile,GET,Profile,edit,1,プロフィールの編集ページ
+/profile,PATCH,Profile,update,1,プロフィールの更新
+/profile,DELETE,Profile,destroy,1,ユーザーの削除

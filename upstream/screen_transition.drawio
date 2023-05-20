@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="zNMeKhwNGLS21fP_U9Kg" name="ページ1">
-        <mxGraphModel dx="746" dy="537" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="474" dy="616" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -14,7 +14,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="2" value="トップ" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="2" value="トップ&lt;br&gt;このアプリについて" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="50" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="33" style="edgeStyle=none;html=1;dashed=1;" parent="1" source="3" target="32" edge="1">
@@ -27,13 +27,13 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="書籍一覧" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="340" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="570" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="会員情報の編集" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="670" y="430" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="720" y="640" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="書籍情報の編集" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="670" y="340" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="720" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="31" style="edgeStyle=none;html=1;dashed=1;" parent="1" source="7" target="30" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -45,12 +45,15 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="会員情報" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="520" y="430" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="570" y="640" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="15" style="edgeStyle=none;html=1;" parent="1" source="9" target="4" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="19" style="edgeStyle=none;html=1;" parent="1" source="9" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=none;html=1;" edge="1" parent="1" source="9" target="36">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="マイページ" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -73,6 +76,27 @@
                 </mxCell>
                 <mxCell id="32" value="リセットメール送信" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="370" y="80" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="問い合わせ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="620" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="39">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="倉庫一覧" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="570" y="440" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="倉庫情報の編集" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="540" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" style="edgeStyle=none;html=1;" edge="1" parent="1" source="39" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="倉庫内の書籍一覧" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="440" width="120" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
