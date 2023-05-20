@@ -91,10 +91,10 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
-    mail:
-        image: mailhog/mailhog
-        ports:
-            - 8026:8026
+    # mail:
+    #     image: mailhog/mailhog
+    #     ports:
+    #         - 8025:8025
     # selenium:
     #     image: selenium/standalone-chrome
     #     extra_hosts:
