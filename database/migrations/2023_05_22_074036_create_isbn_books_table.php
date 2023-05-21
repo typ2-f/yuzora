@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('isbn_books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('storage_id')->nullable()->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('fanzine_id')->nullable()->constrained();
             $table->bigInteger('isbn')->nullable();
             $table->string('title')->nullable();
-            $table->string('status')->nullable();
-            $table->boolean('sold');
-            $table->string('remarks')->nullable();
+            $table->string('img')->nullable();
+            $table->string('price')->nullable();
+            $table->string('publisher')->nullable();
+            $table->string('contributor')->nullable();
+            $table->bigInteger('publishing_date')->nullable();
+            $table->string('form')->nullable();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('isbn_books');
     }
 };

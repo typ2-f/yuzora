@@ -1,0 +1,22 @@
+引用元
+ https://jpo.or.jp/topics/data/101202_1/pdf01.pdf
+ 
+ 
+ ‐『B108』(A5:Tankobon) ← A5
+ ‐『B109』(B5:Tankobon) ← B5
+ ‐『B110』(B6:Tankobon) ← B6
+ ‐『B111』(A6:Bunko) ← 文庫
+ ‐『B112』(B40-dori:Shinsho) ← 新書
+ ‐『B119』(46) ← 46
+ ‐『B120』(46-Henkei) ← 46変形
+ ‐『B121』(A4) ← A4
+ ‐『B122』(A4-Henkei) ← A4変形
+ ‐『B123』(A5-Henk) ← A5変形
+ ‐『B124』(B5-Henkei size)　　← B5変形
+ ‐『B125』(B6-Henkei size) 　← B6変形
+ ‐『B126』(AB size) 　← AB
+ ‐『B127』(B7 size) 　← B7
+ ‐『B128』(Kiku size) 　← 菊
+ ‐『B129』(Kiku-Henkei size) ← 菊変形
+【参考資料-①】 List78(Product form detail )
+

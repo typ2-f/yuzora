@@ -57,5 +57,16 @@ class User extends Authenticatable implements MustVerifyEmailContract
     {
         $this->notify(new PasswordResetEmail($token));
     }
+
+    //リレーション
+    public function storages()
+    {
+        return $this->hasMany(Storage::class);
+    }
+
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }
 

@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slip extends Model
+class IsbnBook extends Model
 {
-
-    public function book()
-    {
-        return $this->hasOne(Book::class);
-    }
+    use HasFactory;
 }

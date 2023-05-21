@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     //書庫
     Route::get('/storages', [StorageController::class, 'index']);
     Route::get('/storages/{id}', [BookInStorageController::class, 'index']);
+    Route::get('/storages/{id}/edit', [BookInStorageController::class, 'index']);
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

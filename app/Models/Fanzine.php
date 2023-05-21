@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slip extends Model
+class Fanzine extends Model
 {
-
-    public function book()
+    use HasFactory;
+    public function books()
     {
-        return $this->hasOne(Book::class);
+        return $this->hasMany(Book::class);
     }
 }
