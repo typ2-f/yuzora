@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class StorageBookLog extends Model
 {
     use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'date',
+    ];
+
     public function storage()
     {
         return $this->belongsTo(Storage::class);

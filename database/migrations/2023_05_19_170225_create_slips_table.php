@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('slips', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_id')->constrained();
-            $table->bigInteger('isbn');
             $table->bigInteger('purchase_date');
             $table->bigInteger('purchase_price');
-            $table->bigInteger('selling_date');
-            $table->bigInteger('selling_price');
+            $table->bigInteger('selling_date')->nullable();
+            $table->bigInteger('selling_price')->nullable();
         });
     }
 

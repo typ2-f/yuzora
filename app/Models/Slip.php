@@ -7,6 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slip extends Model
 {
+    use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'purchase_date',
+        'purchase_price',
+        'selling_date',
+        'selling_price'
+    ];
 
     public function book()
     {
