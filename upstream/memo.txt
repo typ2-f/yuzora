@@ -1,6 +1,0 @@
-書籍管理ツールの開発
-
-ISBNコード -> 国会図書館API
-Prodct Advertising API -> 条件を満たすのが難しい
-
-book_remarks テーブルを作る可能性あり
