@@ -4,8 +4,23 @@ ISBNコード -> openBDから
 
 book_remarks テーブルを作る可能性あり
 
-
 就職後も進めることを想定してかける時間は1日2時間程度
+
+
+route::resource(ex=books)
+index   = get   :books
+store   = post  :books
+create  = get   :books/create
+destroy = delete:books/{id}
+update  = patch :books/{id}
+show    = get   :books/{id}
+edit    = get   :books/{id}/edit
+
+
+
+
+
+
 
 今後の計画
 5/19 ルート設定

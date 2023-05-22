@@ -2,6 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\Storageontroller;
+use App\Http\Controllers\BookInStorageController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +32,35 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //マイページ
-    Route::get('/home', [UserController::class, 'index']);
+    Route::get('/home', [UserController::class, 'index'])->name('home');
 
-    //書籍に関するリソースルート
-    Route::resource('/books', BookController::class);
+    //書籍
+    Route::resource('/books', BookController::class, [
+        'names' => [
+            'index' => 'books.index',
+            'create' => 'books.create',
+            'store' => 'books.store',
+            'show' => 'books.show',
+            'edit' => 'books.edit',
+            'update' => 'books.update',
+            'destroy' => 'books.destroy',
+        ]
+    ]);
 
     //書庫
-    Route::get('/storages', [StorageController::class, 'index']);
+    Route::resource('/storages', StorageController::class, [
+        'names' => [
+            'index' => 'storages.index',
+            'create' => 'storages.create',
+            'store' => 'storages.store',
+            'show' => 'storages.show',
+            'edit' => 'storages.edit',
+            'update' => 'storages.update',
+            'destroy' => 'storages.destroy',
+        ]
+    ]);
+
+    
     Route::get('/storages/{id}', [BookInStorageController::class, 'index']);
     Route::get('/storages/{id}/edit', [BookInStorageController::class, 'index']);
 

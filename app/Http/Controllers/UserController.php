@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\View\View;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class UserController extends Controller
 {
     public function index(){
-        return view('pages.index');
+        return view('pages.home');
     }
 }
