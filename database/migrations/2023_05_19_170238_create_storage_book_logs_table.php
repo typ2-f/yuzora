@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('book_id')->constrained();
             $table->foreignId('storage_id')->constrained();
             $table->bigInteger('date');
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 

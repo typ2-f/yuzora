@@ -28,7 +28,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new Book;
+
+        $book->isbn = $request->isbn;
+        $book->title = $request->title;
+        $book->status = $request->status;
+        $book->sold = $request->sold;
+        $book->remarks = $request->remarks;
     }
 
     /**

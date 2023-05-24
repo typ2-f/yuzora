@@ -20,6 +20,9 @@ class Book extends Model
         'sold',
         'remarks'
     ];
+    protected $attributes = [
+        'sold' => false,
+    ];
 
 
     //リレーション

@@ -3,9 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\Storageontroller;
-use App\Http\Controllers\BookInStorageController;
+use App\Http\Controllers\StorageController;
+use App\Http\Controllers\StorageBookController;
 
 
 
@@ -28,7 +29,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-//Route::get('/',[IndexController::class,'index']);
+//Route::get('/',[IndexController::class,'__invoke']);
 
 Route::middleware('auth')->group(function () {
     //マイページ
@@ -60,9 +61,9 @@ Route::middleware('auth')->group(function () {
         ]
     ]);
 
-    
-    Route::get('/storages/{id}', [BookInStorageController::class, 'index']);
-    Route::get('/storages/{id}/edit', [BookInStorageController::class, 'index']);
+    //任意の書庫内の書籍一覧
+    Route::get('/books/{storage_id}', [StorageBookController::class,'__invoke']);
+
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

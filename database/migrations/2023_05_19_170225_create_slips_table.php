@@ -18,6 +18,8 @@ return new class extends Migration
             $table->bigInteger('purchase_price');
             $table->bigInteger('selling_date')->nullable();
             $table->bigInteger('selling_price')->nullable();
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 

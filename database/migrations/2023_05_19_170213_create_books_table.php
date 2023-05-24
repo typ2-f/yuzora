@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->boolean('sold');
             $table->string('remarks')->nullable();
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('contributor')->nullable();
             $table->bigInteger('publishing_date')->nullable();
             $table->string('form')->nullable();
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
         });
     }
 
