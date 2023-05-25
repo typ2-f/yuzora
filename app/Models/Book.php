@@ -14,6 +14,9 @@ class Book extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'storage_id',
+        'user_id',
+        'fanzine_id',
         'isbn',
         'title',
         'status',

@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('fanzines', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('img')->nullable();
-            $table->string('price')->nullable();
+            $table->bigInteger('price')->nullable();
             $table->string('publisher')->nullable();
             $table->string('contributor')->nullable();
             $table->bigInteger('publishing_date')->nullable();
             $table->string('form')->nullable();
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 

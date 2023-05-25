@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('strage_book_logs', function (Blueprint $table) {
+        Schema::create('slips', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_id')->constrained();
-            $table->foreignId('storage_id')->constrained();
-            $table->bigInteger('date');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->bigInteger('purchase_date');
+            $table->bigInteger('purchase_price');
+            $table->bigInteger('selling_date')->nullable();
+            $table->bigInteger('selling_price')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('strage_book_logs');
+        Schema::dropIfExists('slips');
     }
 };

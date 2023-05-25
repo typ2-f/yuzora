@@ -16,13 +16,12 @@ return new class extends Migration
             $table->bigInteger('isbn')->nullable();
             $table->string('title')->nullable();
             $table->string('img')->nullable();
-            $table->string('price')->nullable();
+            $table->bigInteger('price')->nullable();
             $table->string('publisher')->nullable();
             $table->string('contributor')->nullable();
             $table->bigInteger('publishing_date')->nullable();
             $table->string('form')->nullable();
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->timestamps();
         });
     }
 
