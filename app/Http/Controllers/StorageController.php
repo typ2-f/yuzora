@@ -62,4 +62,8 @@ class StorageController extends Controller
     {
         //
     }
+    
+    public static function getList($user_id){
+
+    }
 }

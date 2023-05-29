@@ -16,8 +16,7 @@ class Book extends Model
     protected $fillable = [
         'storage_id',
         'user_id',
-        'fanzine_id',
-        'isbn',
+        'book_information_id',
         'title',
         'status',
         'sold',
@@ -49,8 +48,8 @@ class Book extends Model
         return $this->hasOne(Slip::class);
     }
 
-    public function fanzine()
+    public function bookInformation()
     {
-        return $this->belongsTo(Fanzine::class);
+        return $this->belongsTo(BookInformation::class);
     }
 }

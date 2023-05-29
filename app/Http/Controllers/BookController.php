@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Fanzine;
-use App\Models\IsbnBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\Type\NullType;
+use App\Http\Controllers\BookInformationController;
 
 class BookController extends Controller
 {
@@ -17,23 +16,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        $user_books = Book::where('user_id', Auth::user()->id)->get();
-        $books = new Collection();
-        foreach ($user_books as $user_book) {
-            switch (true) {
-                case isset($user_book->isbn_id):
-                    $isbn_book = IsbnBook::find($user_book->isbn_id);
-                    $books->concat($isbn_book);
-                    break;
-                case isset($user_book->fanzine_id):
-                    $fanzine = Fanzine::find($user_book->fanzine_id);
-                    $books->concat($fanzine);
-                    break;
-                default:
-                    //エラー
-            }
-        }
-        return view('pages/books/index', compact('books'));
+        $user_books = Auth::user()->books->with('bookInformation')->get();
+ 
     }
 
     /**
@@ -50,44 +34,11 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
-        switch (true) {
-            case $request->fanzine:
-                $fanzine = Fanzine::firstOrCreate(
-                    ['title' => $request->title],
-                    [
-                        'img' => $request->img,
-                        'price' => $request->price,
-                        'publisher' => $request->publisher,
-                        'contributor' => $request->contributor,
-                        'publishing_date' => $request->publishing_date,
-                        'form' => $request->form
-                    ]
-                );
-                $fanzine_id = $fanzine->id;
-                $isbn_id = Null;
-                break;
-            case isset($request->isbn):
-                $isbn = IsbnBook::firstOrCreate(
-                    ['isbn' => $request->isbn],
-                    [
-                        'title' => $request->title,
-                        'img' => $request->img,
-                        'price' => $request->price,
-                        'publisher' => $request->publisher,
-                        'contributor' => $request->contributor,
-                        'publishing_date' => $request->publishing_date,
-                        'form' => $request->form
-                    ]
-                );
-                $fanzine_id = Null;
-                $isbn_id = $isbn->id;
-                break;
-        }
+
         Book::create([
             'user_id' => $user_id,
             'storage_id' => $request->storage_id,
-            'fanzine_id' => $fanzine_id,
-            'isbn_id' => $isbn_id,
+            'book_information_id'=> $request, //後から書き直す
             'status' => $request->status,
             'remarks' => $request->remarks,
         ]);
@@ -99,6 +50,7 @@ class BookController extends Controller
     public function show(int $id)
     {
         $book = Book::find($id);
+        if($book->fanzine_id)
         return view('pages/books/show', compact('book'));
     }
 
@@ -118,9 +70,13 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $user_id = Auth::user()->id;
+
+        //第三者による不正な更新をチェック
         if ($book->user_id !== $user_id) {
-            return false;
+            $msg = "不正なリクエストです";
+            return back()->with($msg);
         }
+
         $book->title = $request->title;
         $book->storage_id = $request->storage_id;
         $book->status = $request->status;
@@ -135,6 +91,7 @@ class BookController extends Controller
      */
     public function destroy(int $id)
     {
-        $book = Book::find($id);
+        Book::destroy($id);
+        return redirect('/books');
     }
 }

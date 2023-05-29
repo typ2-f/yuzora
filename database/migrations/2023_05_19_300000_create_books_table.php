@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('storage_id')->nullable()->constrained();
-            $table->foreignId('fanzine_id')->nullable()->constrained();
-            $table->foreignId('isbn_book_id')->nullable()->constrained();
+            $table->foreignId('book_information_id')->nullable()->constrained();
             $table->string('status')->nullable();
             $table->boolean('sold');
             $table->string('remarks')->nullable();

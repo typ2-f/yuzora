@@ -27,7 +27,8 @@ edit    = get   :books/{id}/edit
 5/26 controller,modelの基本的な機能面完成させる
 6/11 viewをいじる
 
-
+キューを利用した非同期処理
+https://tech-blog.rakus.co.jp/entry/20230125/laravel
 
 書籍一覧
 現在の在庫
