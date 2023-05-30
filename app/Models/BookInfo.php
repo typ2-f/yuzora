@@ -21,7 +21,7 @@ class BookInfo extends Model
     'publisher',
     'contributor',
     'publishing_date',
-    'form'
+    'product_form'
   ];
 
   //リレーション

@@ -20,7 +20,7 @@ return new class extends Migration
       $table->string('publisher')->nullable();
       $table->string('contributor')->nullable();
       $table->bigInteger('publishing_date')->nullable();
-      $table->string('form')->nullable();-
+      $table->string('product_form')->nullable();
       $table->timestamps();
     });
   }
