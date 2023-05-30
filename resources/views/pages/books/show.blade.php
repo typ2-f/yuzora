@@ -1,2 +1,6 @@
-{{--書籍の詳細情報に関するページ--}}
-<h1>books.show</h1>
+<ul>
+    <li>titile:{{ $book->bookInfo->title }}</li>
+    <li>isbn:{{ $book->bookInfo->isbn }}</li>
+    <li>status:{{ $book->status }}</li>
+</ul>
+<a href='/books/{{ $book->id }}/edit'><button>edit</button></a>

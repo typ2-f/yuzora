@@ -1,2 +1,8 @@
-{{--倉庫内の本の一覧を返すページ--}}
-<h1>storages.books</h1>
+<h1>storages/{storage}/books</h1>
+<ul>
+    @foreach ($books as $book)
+        <a href='/books/{{$book->id}}'>
+            <li>{{ $book->bookInfo->title }}</li>
+        </a>
+    @endforeach
+</ul>

@@ -16,8 +16,7 @@ class Book extends Model
     protected $fillable = [
         'storage_id',
         'user_id',
-        'book_information_id',
-        'title',
+        'book_info_id',
         'status',
         'sold',
         'remarks'

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->foreignId('storage_id')->nullable()->constrained();
-            $table->foreignId('book_information_id')->nullable()->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('book_info_id')->nullable()->constrained();
             $table->string('status')->nullable();
             $table->boolean('sold');
             $table->string('remarks')->nullable();

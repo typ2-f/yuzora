@@ -1,9 +1,25 @@
-{{-- 書籍を新規に登録するページ --}}
-<h1>books.create</h1>
-<form method="post" action="{{route('books.store')}}">
+<h1>create</h1>
+<form action='/books' method="post">
     @csrf
-    <div>
-        <label for="isbn">ISBN</label>
-        <input id="isbn"type="text"name="isbn"value={{old('isbn')}}>
+    <input type="number" name="storage_id" id="storage_id" placeholder="storage">
+    <input type="number" name="isbn" id="isbn" placeholder="isbn" autofocus>
+    <button type="button" id="getBookInfo" class="btn">書籍情報を取得</button>
+    <div id="bookInfo">
+        <div class="bookImageBlock">
+            <div class="bookImageInner">
+                <img src="" id="thumbnail">
+            </div>
+        </div>
+
+        <input type="text" name="title" id="title" placeholder="title">
+        <input type="text" name="img" id="img"placeholder="img">
+        <input type="text" name="price" id="price" placeholder="price">
+        <input type="text" name="publisher" id="publisher" placeholder="publisher">
+        <input type="text" name="contributor" id="contributor"placeholder="contributor">
+        <input type="text" name="publishing_date" id="publishing_date"placeholder="publishing_date">
     </div>
+    <input type="text" name="form" id="form"placeholder="form">
+    <input type="number" name="status" id="status" placeholder="status">
+    <input type="submit" value="submit">
 </form>
+<script src="{{ asset('js/isbn.js') }}"></script>

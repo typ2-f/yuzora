@@ -14,6 +14,8 @@ class Slip extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'book_id',
+        'lowest_price',
         'purchase_date',
         'purchase_price',
         'selling_date',

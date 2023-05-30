@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 
 //Route::get('/',[IndexController::class,'__invoke']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','verified')->group(function () {
     //マイページ
     Route::get('/home', [UserController::class, 'index'])->name('home');
 

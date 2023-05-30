@@ -14,6 +14,8 @@ class StorageBookLog extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'book_id',
+        'storage_id',
         'date',
     ];
 

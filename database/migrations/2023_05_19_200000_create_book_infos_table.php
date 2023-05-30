@@ -11,7 +11,7 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('book_informations', function (Blueprint $table) {
+    Schema::create('book_infos', function (Blueprint $table) {
       $table->id();
       $table->bigInteger('isbn')->nullable();
       $table->string('title');
@@ -20,7 +20,7 @@ return new class extends Migration
       $table->string('publisher')->nullable();
       $table->string('contributor')->nullable();
       $table->bigInteger('publishing_date')->nullable();
-      $table->string('form')->nullable();
+      $table->string('form')->nullable();-
       $table->timestamps();
     });
   }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\Type\NullType;
-use App\Http\Controllers\BookInformationController;
+use App\Http\Controllers\BookInfoController;
 
 class BookController extends Controller
 {
@@ -16,8 +16,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        $user_books = Auth::user()->books->with('bookInformation')->get();
- 
+        $user_id = Auth::user()->id;
+        $books = Book::with('bookInfo','storage')->where('user_id', $user_id)->get();
+        return view('pages/books/index', compact('books'));
     }
 
     /**
@@ -34,14 +35,14 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
-
+        $book_info_id = BookInfoController::store($request);
         Book::create([
             'user_id' => $user_id,
             'storage_id' => $request->storage_id,
-            'book_information_id'=> $request, //後から書き直す
-            'status' => $request->status,
-            'remarks' => $request->remarks,
+            'book_info_id' => $book_info_id,
+            'status' => $request->status
         ]);
+        return redirect()->route('pages/books/index');
     }
 
     /**
@@ -49,8 +50,7 @@ class BookController extends Controller
      */
     public function show(int $id)
     {
-        $book = Book::find($id);
-        if($book->fanzine_id)
+        $book = Book::with('bookInfo')->find($id);
         return view('pages/books/show', compact('book'));
     }
 
@@ -59,7 +59,11 @@ class BookController extends Controller
      */
     public function edit(int $id)
     {
-        $book = Book::find($id);
+        $book = Book::with('bookInfo')->find($id);
+        $user_id = Auth::user()->id;
+        if ($book->user_id !== $user_id) {
+            return back()->with('alert', '不正なリクエストです');
+        }
         return view('pages/books/edit', compact('book'));
     }
 
@@ -69,12 +73,11 @@ class BookController extends Controller
     public function update(Request $request, int $id)
     {
         $book = Book::find($id);
-        $user_id = Auth::user()->id;
+        $book_info_id = $book->book_info_id;
+        $book_info = BookInfoController::update($request, $book_info_id);
 
-        //第三者による不正な更新をチェック
-        if ($book->user_id !== $user_id) {
-            $msg = "不正なリクエストです";
-            return back()->with($msg);
+        if ($book_info === false) {
+            return back()->with('alert', 'ISBNコードから取得したデータは書換不可です');
         }
 
         $book->title = $request->title;
@@ -83,7 +86,7 @@ class BookController extends Controller
         $book->sold = $request->sold;
         $book->remarks = $request->remarks;
         $book->save();
-        return redirect()->route('books/index');
+        return redirect()->route('pages/books/index');
     }
 
     /**

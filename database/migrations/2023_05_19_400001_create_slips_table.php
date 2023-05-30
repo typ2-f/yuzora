@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('slips', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_id')->constrained();
+            $table->bigInteger('lowest_price');
             $table->bigInteger('purchase_date');
             $table->bigInteger('purchase_price');
             $table->bigInteger('selling_date')->nullable();
