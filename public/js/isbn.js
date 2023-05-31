@@ -1,3 +1,5 @@
+//9784062639248
+//9784062768542
 document.getElementById("getBookInfo").addEventListener("click", () => {
     // isbnに入力された値を取得
     var userInput = document.getElementById("isbn").value;
@@ -31,6 +33,9 @@ document.getElementById("getBookInfo").addEventListener("click", () => {
             //出版日
             document.getElementById("publishing_date").value =
                 data[0].summary.pubdate;
+            //大きさ
+            document.getElementById("product_form").value =
+                data[0].onix.DescriptiveDetail.ProductFormDetail;
             //詳細
             document.getElementById("description").innerHTML =
                 data[0].onix.CollateralDetail.TextContent[0].Text;
