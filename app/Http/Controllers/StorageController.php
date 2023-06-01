@@ -37,7 +37,7 @@ class StorageController extends Controller
             'name' => $request->name,
             'address' => $request->address,
         ]);
-        return redirect()->route('pages/storages.index');
+        return redirect()->route('storages.index');
     }
 
     /**
@@ -67,7 +67,7 @@ class StorageController extends Controller
         $storage->name = $request->name;
         $storage->address = $request->address;
         $storage->save();
-        return redirect()->route('pages/storages.index');
+        return redirect()->route('storages.index');
     }
 
     /**
@@ -76,6 +76,6 @@ class StorageController extends Controller
     public function destroy(int $id)
     {
         Storage::destroy($id);
-        return redirect()->route('pages/storages.index');
+        return redirect()->route('storages/index');
     }
 }

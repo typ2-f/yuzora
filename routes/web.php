@@ -31,15 +31,35 @@ Route::get('/dashboard', function () {
 
 //Route::get('/',[IndexController::class,'__invoke']);
 
-Route::middleware('auth','verified')->group(function () {
+Route::middleware('auth', 'verified')->group(function () {
     //マイページ
     Route::get('/home', [UserController::class, 'index'])->name('home');
 
-    Route::resource('/books', BookController::class);
-    Route::resource('/storages', StorageController::class);
+    Route::resource('/books', BookController::class,[
+        'names' => [
+            'index' => 'books.index',
+            'create' => 'books.create',
+            'store' => 'books.store',
+            'show' => 'books.show',
+            'edit' => 'books.edit',
+            'update' => 'books.update',
+            'destroy' => 'books.destroy',
+        ]
+    ]);
+    Route::resource('/storages', StorageController::class,[
+        'names' => [
+            'index' => 'storages.index',
+            'create' => 'storages.create',
+            'store' => 'storages.store',
+            'show' => 'storages.show',
+            'edit' => 'storages.edit',
+            'update' => 'storages.update',
+            'destroy' => 'storages.destroy',
+        ]
+    ]);
 
     //任意の書庫内の書籍一覧
-    Route::get('/storages/{storage}/books', [StorageBookController::class,'__invoke']);
+    Route::get('/storages/{storage}/books', [StorageBookController::class, '__invoke']);
 
 
 

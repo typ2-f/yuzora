@@ -1,5 +1,5 @@
 <h1>storages.index</h1>
-<a href='storages/create'>create</a>
+<a href={{route('storages.create')}}>create</a>
 <ul>
     @foreach ($storages as $storage)
         <a href='/storages/{{ $storage->id }}/books'>
