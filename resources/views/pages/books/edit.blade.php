@@ -2,7 +2,7 @@
 <div>{{ $book->bookInfo->title }}</div>
 <div>{{ session('alert') }}</div>
 <div>
-    <form method="post" action="/books/{{ $book->id }}">
+    <form method="post" action={{ route('books.update', ['book' => $book->id]) }}>
         @csrf
         <input type="text" name="title" id="title" value={{ $book->bookInfo->title }}>
         <input type="number" name="isbn" id="isbn" value={{ $book->bookInfo->isbn }}>
@@ -12,7 +12,7 @@
 </div>
 
 <div>
-    <form method="post" action="/books/{{ $book->id }}">
+    <form method="post" action={{ route('books.destroy', ['book' => $book->id]) }}>
         @csrf
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="delete!!">

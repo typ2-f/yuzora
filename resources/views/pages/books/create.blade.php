@@ -1,5 +1,5 @@
 <h1>create</h1>
-<form action='/books' method="post">
+<form action={{ route('books.store') }} method="post">
     @csrf
     <input type="number" name="storage_id" id="storage_id" placeholder="storage">
     <input type="number" name="isbn" id="isbn" placeholder="isbn" autofocus>

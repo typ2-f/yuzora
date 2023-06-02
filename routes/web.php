@@ -59,7 +59,7 @@ Route::middleware('auth', 'verified')->group(function () {
     ]);
 
     //任意の書庫内の書籍一覧
-    Route::get('/storages/{storage}/books', [StorageBookController::class, '__invoke']);
+    Route::get('/storages/{storage}/books', [StorageBookController::class, '__invoke'])->name('storages.books');
 
 
 

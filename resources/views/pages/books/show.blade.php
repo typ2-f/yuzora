@@ -3,4 +3,4 @@
     <li>isbn:{{ $book->bookInfo->isbn }}</li>
     <li>status:{{ $book->status }}</li>
 </ul>
-<a href='/books/{{ $book->id }}/edit'><button>edit</button></a>
+<a href={{route('books.edit',['book'=>$book->id])}}><button>edit</button></a>
