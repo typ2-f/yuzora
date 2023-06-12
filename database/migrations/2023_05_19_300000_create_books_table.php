@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('storage_id')->nullable()->constrained();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('book_info_id')->nullable()->constrained();
-            $table->string('status')->nullable();
+            $table->unsignedInteger('status')->nullable();
             $table->boolean('sold');
-            $table->string('remarks')->nullable();
+            $table->text('remarks')->nullable();
             $table->timestamps();
         });
     }

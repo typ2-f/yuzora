@@ -47,8 +47,8 @@ class Book extends Model
         return $this->hasOne(Slip::class);
     }
 
-    public function bookInformation()
+    public function bookInfo()
     {
-        return $this->belongsTo(BookInformation::class);
+        return $this->belongsTo(BookInfo::class);
     }
 }

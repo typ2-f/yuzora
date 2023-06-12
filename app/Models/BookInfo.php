@@ -14,6 +14,7 @@ class BookInfo extends Model
    * @var array<int, string>
    */
   protected $fillable = [
+    'user_id',
     'isbn',
     'title',
     'img',
@@ -28,5 +29,9 @@ class BookInfo extends Model
   public function book()
   {
     return $this->hasMany(Book::class);
+  }
+  public function user()
+  {
+    return $this->belongsTo(User::class);
   }
 }

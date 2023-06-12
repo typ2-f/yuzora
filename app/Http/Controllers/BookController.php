@@ -17,7 +17,7 @@ class BookController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
-        $books = Book::with('bookInfo','storage')->where('user_id', $user_id)->get();
+        $books = Book::with('bookInfo', 'storage')->where('user_id', $user_id)->get();
         return view('pages/books/index', compact('books'));
     }
 
@@ -26,7 +26,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('pages/books/create');
+        $storages= Auth::user()->storages;
+        return view('pages/books/create',compact('storages'));
     }
 
     /**
@@ -35,14 +36,16 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
-        $book_info_id = BookInfoController::store($request);
+        $book_info_id = BookInfoController::store($request, $user_id);
         Book::create([
             'user_id' => $user_id,
             'storage_id' => $request->storage_id,
             'book_info_id' => $book_info_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'sold' => false,
+            'remarks' => $request->remarks
         ]);
-        return redirect()->route('pages/books/index');
+        return redirect()->route('books.index');
     }
 
     /**
@@ -74,11 +77,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         $book_info_id = $book->book_info_id;
-        $book_info = BookInfoController::update($request, $book_info_id);
-
-        if ($book_info === false) {
-            return back()->with('alert', 'ISBNコードから取得したデータは書換不可です');
-        }
+        BookInfoController::update($request, $book_info_id);
 
         $book->title = $request->title;
         $book->storage_id = $request->storage_id;
