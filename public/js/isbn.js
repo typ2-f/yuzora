@@ -1,6 +1,7 @@
 const isbn = document.getElementById("isbn")
 const btn = document.getElementById("btn_book_info")
 const isbn_check = document.getElementById("isbn_check");
+const isbn_alert = document.getElementById("isbn_alert");
 const bookImg = document.getElementById("thumbnail");
 const img = document.getElementById("img");
 const title = document.getElementById("title");
@@ -12,9 +13,8 @@ const product_form = document.getElementById("product_form");
 
 btn.addEventListener("click", () => {
     if (btn.value == "true") {
-        console.log("リセットするよ！");
         btn.value = false;
-        btn.textContent = "書籍情報を取得";
+        btn.textContent = "Get";
         isbn_check.value = false;
 
         isbn_check.value = false;
@@ -62,10 +62,11 @@ btn.addEventListener("click", () => {
         .then((data) => {
 
             if (data[0] == null) {
+                isbn_alert.messages = "test";
             } else {
                 btn.value = true;
-                btn.textContent = "リセット"
-                
+                btn.textContent = "Reset"
+
                 isbn_check.value = true;
                 isbn.setAttribute("disabled", true);
                 // サムネイル
