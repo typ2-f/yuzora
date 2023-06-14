@@ -10,21 +10,33 @@
                     <option value={{ $storage->id }}>{{ $storage->name }}</option>
                 @endforeach
             </select>
+            <input type="submit" value="submit">
+        </li>
+        <li class="input_li" id="input_li_status">
+            <label for="status">状態</label>
+            <select name="status" id="status">
+                <option value="1">非常に良い</option>
+                <option value="2">良</option>
+                <option value="3">可</option>
+            </select>
+        </li>
+        <li class="input_li" id="input_li_remarks">
+            <label for="remarks">備考</label>
+            <input type="text" name="remarks" id="remarks" placeholder="remarks">
         </li>
         <li class="input_li" id="input_li_isbn">
             <label for="isbn">ISBN</label>
             <input type="text" name="isbn" id="isbn" placeholder="isbn" autofocus>
-            <button type="button" id="getBookInfo" class="btn">書籍情報を取得</button>
+            <input type="hidden" name="isbn_check" id="isbn_check" value="false">
+            <button type="button" id="btn_book_info" class="btn" value="false">書籍情報を取得</button>
         </li>
         <li class="book_image" id="book_img">
             <img src="" id="thumbnail">
+            <input type="hidden" name="img" id="img" placeholder="img" value="">
         </li>
         <li class="input_li" id="input_li_title">
             <label for="title">タイトル</label>
             <input type="text" name="title" id="title" placeholder="title">
-        </li>
-        <li class="input_li" id="input_li_img">
-            <input type="hidden" name="img" id="img" placeholder="img" value="">
         </li>
         <li class="input_li" id="input_li_price">
             <label for="price">定価</label>
@@ -46,19 +58,8 @@
             <label for="product_form">版型</label>
             <input type="text" name="product_form" id="product_form" placeholder="product_form">
         </li>
-        <li class="input_li" id="input_li_status">
-            <label for="status">状態</label>
-            <select name="status" id="status">
-                <option value="1">非常に良い</option>
-                <option value="2">良</option>
-                <option value="3">可</option>
-            </select>
-        </li>
-        <li class="input_li" id="input_li_remarks">
-            <label for="remarks">備考</label>
-            <input type="text" name="remarks" id="remarks" placeholder="remarks">
-        </li>
+
     </ul>
-    <input type="submit" value="submit">
+
 </form>
 <script src="{{ asset('js/isbn.js') }}"></script>

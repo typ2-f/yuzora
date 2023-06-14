@@ -76,6 +76,6 @@ class StorageController extends Controller
     public function destroy(int $id)
     {
         Storage::destroy($id);
-        return redirect()->route('storages/index');
+        return redirect()->route('storages.index');
     }
 }

@@ -67,7 +67,8 @@ class BookController extends Controller
         if ($book->user_id !== $user_id) {
             return back()->with('alert', '不正なリクエストです');
         }
-        return view('pages/books/edit', compact('book'));
+        $storages = Auth::user()->storages;
+        return view('pages/books/edit', compact('book','storages'));
     }
 
     /**
@@ -79,13 +80,12 @@ class BookController extends Controller
         $book_info_id = $book->book_info_id;
         BookInfoController::update($request, $book_info_id);
 
-        $book->title = $request->title;
         $book->storage_id = $request->storage_id;
         $book->status = $request->status;
         $book->sold = $request->sold;
         $book->remarks = $request->remarks;
         $book->save();
-        return redirect()->route('pages/books/index');
+        return redirect()->route('books.index');
     }
 
     /**
